@@ -48,7 +48,7 @@ sudo curl -sSL https://get.docker.com | sh
 Login as root, then do:
 
 ```
-wget https://raw.githubusercontent.com/wfthkttn/BSD-Masternode-Setup-1604/master/bsd-docker.sh
+wget https://raw.githubusercontent.com/LIMXTEC/BSD-Masternode-Setup-1604/master/bsd-docker.sh
 chmod +x bsd-docker.sh
 ./bsd-docker.sh
 ```
