@@ -16,12 +16,12 @@ yes | ufw enable
 
 ## Pull docker image
 ```
-docker pull <repository>/bsd-masternode
+docker pull limxtec/bsd-masternode
 ```
 
 ## Run docker container
 ```
-docker run -p 8886:8886 -p 8800:8800 -p 9051:9051 --name bsd-masternode -e BSDPWD='NEW_BSD_PWD' -e MN_KEY='YOUR_MN_KEY' -v /home/bitsend:/home/bitsend:rw -d <repository>/bsd-masternode
+docker run -p 8886:8886 -p 8800:8800 -p 9051:9051 --name bsd-masternode -e BSDPWD='NEW_BSD_PWD' -e MN_KEY='YOUR_MN_KEY' -v /home/bitsend:/home/bitsend:rw -d limxtec/bsd-masternode
 docker ps
 ```
 
@@ -43,7 +43,7 @@ docker exec -it bsd-masternode bash
 
 ## Debbuging within a container during run (skip start.sh execution)
 ```
-docker run -p 8886:8886 -p 8800:8800 -p 9051:9051 --name bsd-masternode -e BSDPWD='NEW_BSD_PWD' -e MN_KEY='YOUR_MN_KEY' -v /home/bitsend:/home/bitsend:rw --entrypoint bash <repository>/bsd-masternode
+docker run -p 8886:8886 -p 8800:8800 -p 9051:9051 --name bsd-masternode -e BSDPWD='NEW_BSD_PWD' -e MN_KEY='YOUR_MN_KEY' -v /home/bitsend:/home/bitsend:rw --entrypoint bash limxtec/bsd-masternode
 ```
 
 ## Stop docker container
