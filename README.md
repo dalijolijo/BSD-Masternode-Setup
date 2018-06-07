@@ -54,8 +54,8 @@ chmod +x bsd-docker.sh
 ```
 
 ### For more details to docker related stuff have a look at:
-* BSD-Masternode-Setup-1604/BUILD_README.md
-* BSD-Masternode-Setup-1604/RUN_README.md
+* BSD-Masternode-Setup/BUILD_README.md
+* BSD-Masternode-Setup/RUN_README.md
 
 
 ## Visit us at [Telegram](https://t.me/BSD_Bitsend)
