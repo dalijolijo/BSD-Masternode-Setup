@@ -3,6 +3,9 @@ set -u
 
 DOCKER_REPO="dalijolijo"
 CONFIG="/home/bitsend/.bitsend/bitsend.conf"
+DEFAULT_PORT="8886"
+RPC_PORT="8800"
+TOR_PORT="9051"
 
 #
 # Check if bitsend.conf already exist. Set bitsend user pwd and masternode genkey
@@ -58,24 +61,48 @@ else
     VER=$(uname -r)
 fi
 
-# Configurations for Ubuntu
-if [[ $OS =~ "Ubuntu" ]] || [[ $OS =~ "ubuntu" ]]; then
+#
+# Configuration for Ubuntu/Debian/Mint
+#
+if [[ $OS =~ "Ubuntu" ]] || [[ $OS =~ "ubuntu" ]] || [[ $OS =~ "Debian" ]] || [[ $OS =~ "debian" ]] || [[ $OS =~ "Mint" ]] || [[ $OS =~ "mint" ]]; then
     echo "Configuration for $OS ($VER)..."
     
-    # Firewall settings (for Ubuntu)
-    echo "Setup firewall..."
-    ufw logging on
-    ufw allow 22/tcp
-    ufw limit 22/tcp
-    ufw allow 8886/tcp
-    ufw allow 8800/tcp
-    ufw allow 9051/tcp
-    # if other services run on other ports, they will be blocked!
-    #ufw default deny incoming 
-    ufw default allow outgoing 
-    yes | ufw enable
-    
-    # Installation further package (Ubuntu 16.04)
+    #Check if firewall ufw is installed
+    which ufw >/dev/null
+    if [ $? -ne 0 ];then
+        echo "Missing firewall (ufw) on your system."
+        echo "Automated firewall setup will open the following ports: 22, ${DEFAULT_PORT}, ${RPC_PORT} and ${TOR_PORT}"
+        echo -n "Do you want to install firewall (ufw) and execute automated firewall setup? Enter Yes or No and Hit [ENTER]: "
+        read FIRECONF
+    else
+        echo "Found firewall ufw on your system. Automated firewall setup will open the following ports: 22, ${DEFAULT_PORT}, ${RPC_PORT} and ${TOR_PORT}"
+        echo -n "Do you want to start automated firewall setup? Enter Yes or No and Hit [ENTER]: "
+        read FIRECONF
+
+        if [[ $FIRECONF =~ "Y" ]] || [[ $FIRECONF =~ "y" ]]; then
+           #Installation of ufw, if not installed yet
+           which ufw >/dev/null
+           if [ $? -ne 0 ];then
+               apt-get update
+               sudo apt-get install -y ufw
+           fi
+           
+           # Firewall settings
+           echo "Setup firewall..."
+           ufw logging on
+           ufw allow 22/tcp
+           ufw limit 22/tcp
+           ufw allow ${DEFAULT_PORT}/tcp
+           ufw allow ${RPC_PORT}/tcp
+           ufw allow ${TOR_PORT}/tcp
+           # if other services run on other ports, they will be blocked!
+           #ufw default deny incoming
+           ufw default allow outgoing
+           yes | ufw enable
+        fi
+    fi
+
+    # Installation further package
     echo "Install further packages..."
     apt-get update
     sudo apt-get install -y apt-transport-https \
@@ -84,7 +111,8 @@ if [[ $OS =~ "Ubuntu" ]] || [[ $OS =~ "ubuntu" ]]; then
                             software-properties-common
 else
     echo "Automated firewall setup for $OS ($VER) not supported!"
-    echo "Please open firewall ports 22, 8800, 8886 and 9051 manually."
+    echo "Please open firewall ports 22, ${DEFAULT_PORT}, ${RPC_PORT} and ${TOR_PORT} manually."
+    exit
 fi
 
 #
@@ -92,4 +120,4 @@ fi
 #
 docker rm bsd-masternode
 docker pull ${DOCKER_REPO}/bsd-masternode
-docker run -p 8800:8800 -p 8886:8886 -p 9051:9051 --name bsd-masternode -e BSDPWD="${BSDPWD}" -e MN_KEY="${MN_KEY}" -v /home/bitsend:/home/bitsend:rw -d ${DOCKER_REPO}/bsd-masternode
+docker run -p ${DEFAULT_PORT}:${DEFAULT_PORT} -p ${RPC_PORT}:${RPC_PORT} -p ${TOR_PORT}:${TOR_PORT} --name bsd-masternode -e BSDPWD="${BSDPWD}" -e MN_KEY="${MN_KEY}" -v /home/bitsend:/home/bitsend:rw -d ${DOCKER_REPO}/bsd-masternode
