@@ -166,7 +166,7 @@ sudo docker ps | grep ${CONTAINER_NAME} >/dev/null
 if [ $? -ne 0 ];then
     printf "Sorry! Something went wrong. :(\n"
 else
-    printf "GREAT! Your bsd-masternode docker container is running now! :)\n"
+    printf "GREAT! Your BitSend (BSD) Masternode Docker Container is running now! :)\n"
     printf "\nShow your running docker container \'${CONTAINER_NAME}\' with 'docker ps'\n"
     sudo docker ps | grep ${CONTAINER_NAME}
     printf "\nJump inside the docker container with 'docker exec -it ${CONTAINER_NAME} bash'\n"
