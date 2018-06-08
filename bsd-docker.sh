@@ -15,10 +15,10 @@ clear
 REUSE="No"
 printf "\nDOCKER SETUP FOR BITSEND (BSD) RPC SERVER\n"
 printf "\nSetup Config file"
-printf "\n-----------------\n"
+printf "\n-----------------"
 if [ -f "$CONFIG" ]
 then
-        printf "Found $CONFIG on your system.\n"
+        printf "\nFound $CONFIG on your system.\n"
         printf "\nDo you want to re-use this existing config file?\n" 
         printf "Enter [Y]es or [N]o and Hit [ENTER]: "
         read REUSE
