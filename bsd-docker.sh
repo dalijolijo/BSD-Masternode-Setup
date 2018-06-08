@@ -136,7 +136,7 @@ fi
 #
 printf "\nStart Docker container"
 printf "\n----------------------\n"
-sudo docker ps | grep bsd-masternode >/dev/null
+sudo docker ps | grep ${CONTAINER_NAME} >/dev/null
 if [ $? -eq 0 ];then
     printf "Conflict! The container name \'${CONTAINER_NAME}\' is already in use.\n"
     printf "\nDo you want to stop the running container to start the new one?\n"
