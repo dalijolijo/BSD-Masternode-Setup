@@ -152,7 +152,7 @@ if [ $? -eq 0 ];then
 	exit 1
     fi
 fi
-docker rm ${CONTAINER_NAME}
+docker rm ${CONTAINER_NAME} >/dev/null
 docker pull ${DOCKER_REPO}/bsd-masternode
 docker run -p ${DEFAULT_PORT}:${DEFAULT_PORT} -p ${RPC_PORT}:${RPC_PORT} -p ${TOR_PORT}:${TOR_PORT} --name ${CONTAINER_NAME} -e BSDPWD="${BSDPWD}" -e MN_KEY="${MN_KEY}" -v /home/bitsend:/home/bitsend:rw -d ${DOCKER_REPO}/bsd-masternode
 
