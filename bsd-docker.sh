@@ -148,7 +148,7 @@ if [ $? -eq 0 ];then
     else
 	printf "\nDocker Setup Result"
         printf "\n----------------------\n"
-        printf "Canceled the docker setup without starting new docker container.\n\n"
+        printf "Canceled the Docker Setup without starting BitSend Masternode Docker Container.\n\n"
 	exit 1
     fi
 fi
