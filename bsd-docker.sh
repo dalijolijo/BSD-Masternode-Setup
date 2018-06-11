@@ -69,7 +69,7 @@ else
     OS=$(uname -s)
     VER=$(uname -r)
 fi
-printf "Found installed $OS ($VER)\n"
+printf "Found installed $OS $VER\n"
 
 #
 # Setup Firewall, install further packages...
@@ -180,14 +180,10 @@ if [[ $OS =~ "Fedora" ]] || [[ $OS =~ "fedora" ]] || [[ $OS =~ "CentOS" ]] || [[
     systemctl start docker.service
     systemctl enable docker.service
 
-#
 # Configuration for Ubuntu/Debian/Mint
-#
-printf "\nSetup Firewall"
-printf "\n--------------\n"
-if [[ $OS =~ "Ubuntu" ]] || [[ $OS =~ "ubuntu" ]] || [[ $OS =~ "Debian" ]] || [[ $OS =~ "debian" ]] || [[ $OS =~ "Mint" ]] || [[ $OS =~ "mint" ]]; then
-
-    #Check if firewall ufw is installed
+elif [[ $OS =~ "Ubuntu" ]] || [[ $OS =~ "ubuntu" ]] || [[ $OS =~ "Debian" ]] || [[ $OS =~ "debian" ]] || [[ $OS =~ "Mint" ]] || [[ $OS =~ "mint" ]]; then
+    
+    # Check if firewall ufw is installed
     which ufw >/dev/null
     if [ $? -ne 0 ];then
         printf "Missing firewall (ufw) on your system.\n"
@@ -204,7 +200,7 @@ if [[ $OS =~ "Ubuntu" ]] || [[ $OS =~ "ubuntu" ]] || [[ $OS =~ "Debian" ]] || [[
     fi
 
     if [[ $FIRECONF =~ "Y" ]] || [[ $FIRECONF =~ "y" ]]; then
-        #Installation of ufw, if not installed yet
+        # Installation of ufw, if not installed yet
         which ufw >/dev/null
         if [ $? -ne 0 ];then
            apt-get update
@@ -237,7 +233,6 @@ if [[ $OS =~ "Ubuntu" ]] || [[ $OS =~ "ubuntu" ]] || [[ $OS =~ "Debian" ]] || [[
 else
     printf "Automated firewall setup for $OS ($VER) not supported!\n"
     printf "Please open firewall ports 22, ${DEFAULT_PORT}, ${RPC_PORT} and ${TOR_PORT} manually.\n"
-    exit
 fi
 
 #
