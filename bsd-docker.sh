@@ -27,7 +27,7 @@ fi
 if [[ $REUSE =~ "N" ]] || [[ $REUSE =~ "n" ]]; then
         printf "\nEnter new password for [bitsend] user and Hit [ENTER]: "
         read BSDPWD
-        printf "Enter your bitsend masternode genkey respond and Hit [ENTER]: "
+        printf "Enter your BitSend Masternode genkey respond and Hit [ENTER]: "
         read MN_KEY
 else
         source $CONFIG
@@ -70,6 +70,12 @@ else
     VER=$(uname -r)
 fi
 printf "Found installed $OS ($VER)\n"
+
+#
+# Setup Firewall, install further packages...
+#
+printf "\nSetup Firewall"
+printf "\n--------------\n"
 
 # Configuration for Fedora
 if [[ $OS =~ "Fedora" ]] || [[ $OS =~ "fedora" ]] || [[ $OS =~ "CentOS" ]] || [[ $OS =~ "centos" ]]; then
@@ -190,7 +196,7 @@ if [[ $OS =~ "Ubuntu" ]] || [[ $OS =~ "ubuntu" ]] || [[ $OS =~ "Debian" ]] || [[
         printf "Enter [Y]es or [N]o and Hit [ENTER]: "
         read FIRECONF
     else
-        printf "Found firewall ufw on your system.\n"
+        printf "Found firewall 'ufw' on your system.\n"
         printf "Automated firewall setup will open the following ports: 22, ${DEFAULT_PORT}, ${RPC_PORT} and ${TOR_PORT}\n"
         printf "\nDo you want to start automated firewall setup?\n"
         printf "Enter [Y]es or [N]o and Hit [ENTER]: "
