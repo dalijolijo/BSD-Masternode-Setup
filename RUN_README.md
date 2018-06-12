@@ -32,7 +32,7 @@ tail -f /home/bitsend/.bitsend/debug.log
 
 docker ps
 docker exec -it bsd-masternode bash
-  # you are inside the btx-rpc-server container
+  # you are inside the bsd-masternode container
   root@container# supervisorctl status bitsendd
   root@container# cat /var/log/supervisor/supervisord.log
   # Change to bitsend user
