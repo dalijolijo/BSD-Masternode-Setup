@@ -1,8 +1,6 @@
 #!/bin/bash
 set -u
 
-BOOTSTRAP='bootstrap.tar.gz'
-
 #
 # Set passwd of bitsend user
 #
@@ -31,8 +29,8 @@ sed -i "s/^\(masternodeprivkey=\).*/masternodeprivkey=${MN_KEY}/" /home/bitsend/
 #
 printf "** Downloading bootstrap file ***\n"
 cd /home/bitsend/.bitsend/
-if [ ! -d /home/bitsend/.bitsend/blocks ] && [ "$(curl -Is https://www.mybitsend.com/${BOOTSTRAP} | head -n 1 | tr -d '\r\n')" = "HTTP/1.1 200 OK" ] ; then \
-        sudo -u bitsend wget https://www.mybitsend.com/${BOOTSTRAP}; \
+if [ ! -d /home/bitsend/.bitsend/blocks ] && [ "$(curl -Is https://${WEB}/${BOOTSTRAP} | head -n 1 | tr -d '\r\n')" = "HTTP/1.1 200 OK" ] ; then \
+        sudo -u bitsend wget https://${WEB}/${BOOTSTRAP}; \
         sudo -u bitsend tar -xvzf ${BOOTSTRAP}; \
         sudo -u bitsend rm ${BOOTSTRAP}; \
 fi
