@@ -7,6 +7,8 @@ CONTAINER_NAME="bsd-masternode"
 DEFAULT_PORT="8886"
 RPC_PORT="8800"
 TOR_PORT="9051"
+WEB="www.mybitsend.com" # without "https://" and without the last "/" (only HTTPS accepted)
+BOOTSTRAP="bootstrap.tar.gz"
 
 #
 # Check if bitsend.conf already exist. Set bitsend user pwd and masternode genkey
@@ -258,7 +260,7 @@ if [ $? -eq 0 ];then
 fi
 docker rm ${CONTAINER_NAME} >/dev/null
 docker pull ${DOCKER_REPO}/bsd-masternode
-docker run -p ${DEFAULT_PORT}:${DEFAULT_PORT} -p ${RPC_PORT}:${RPC_PORT} -p ${TOR_PORT}:${TOR_PORT} --name ${CONTAINER_NAME} -e BSDPWD="${BSDPWD}" -e MN_KEY="${MN_KEY}" -v /home/bitsend:/home/bitsend:rw -d ${DOCKER_REPO}/bsd-masternode
+docker run -p ${DEFAULT_PORT}:${DEFAULT_PORT} -p ${RPC_PORT}:${RPC_PORT} -p ${TOR_PORT}:${TOR_PORT} --name ${CONTAINER_NAME} -e BSDPWD="${BSDPWD}" -e MN_KEY="${MN_KEY}" -e WEB="${WEB}" -e BOOTSTRAP="${BOOTSTRAP}" -v /home/bitsend:/home/bitsend:rw -d ${DOCKER_REPO}/bsd-masternode
 
 #
 # Show result and give user instructions
