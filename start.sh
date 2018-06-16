@@ -10,7 +10,7 @@ echo bitsend:${BSDPWD} | chpasswd
 # Downloading bitsend.conf
 #
 cd /tmp/
-wget https://raw.githubusercontent.com/dalijolijo/BSD-Masternode-Setup/master/bitsend.conf -O /tmp/bitsend.conf
+wget https://raw.githubusercontent.com/LIMXTEC/BSD-Masternode-Setup/master/bitsend.conf -O /tmp/bitsend.conf
 chown bitsend:bitsend /tmp/bitsend.conf
 
 #

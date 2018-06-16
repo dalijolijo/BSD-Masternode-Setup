@@ -31,7 +31,7 @@ docker build [--build-arg BSDPWD='<bitsend user pwd>'] -t bsd-masternode .
 
 ## Push docker image to hub.docker
 ```
-docker tag bsd-masternode <repository>/bsd-masternode
-docker login -u <repository> -p"<PWD>"
-docker push <repository>/bsd-masternode:<tag>
+docker tag bsd-masternode limxtec/bsd-masternode
+docker login -u limxtec -p"<PWD>"
+docker push limxtec/bsd-masternode:<tag>
 ```

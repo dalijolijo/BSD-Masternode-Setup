@@ -1,7 +1,7 @@
 #!/bin/bash
 set -u
 
-DOCKER_REPO="dalijolijo"
+DOCKER_REPO="limxtec"
 CONFIG="/home/bitsend/.bitsend/bitsend.conf"
 CONTAINER_NAME="bsd-masternode"
 DEFAULT_PORT="8886"

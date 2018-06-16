@@ -16,7 +16,7 @@ yes | ufw enable
 
 ## Pull docker image
 ```
-docker pull <repository>/bsd-masternode
+docker pull limxtec/bsd-masternode
 ```
 
 ## Run docker container
