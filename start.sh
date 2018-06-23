@@ -20,9 +20,9 @@ printf "** Set rpcuser, rpcpassword and masternode genkey ***\n"
 mkdir -p /home/bitsend/.bitsend
 chown -R bitsend:bitsend /home/bitsend
 sudo -u bitsend cp /tmp/bitsend.conf /home/bitsend/.bitsend/
-sed -i "s/^\(rpcuser=\).*/rpcuser=bsdmasternode${BSDPWD}/" /home/bitsend/.bitsend/bitsend.conf
-sed -i "s/^\(rpcpassword=\).*/rpcpassword=${BSDPWD}/" /home/bitsend/.bitsend/bitsend.conf
-sed -i "s/^\(masternodeprivkey=\).*/masternodeprivkey=${MN_KEY}/" /home/bitsend/.bitsend/bitsend.conf
+sed -i "s|^\(rpcuser=\).*|rpcuser=bsdmasternode$(openssl rand -base64 32)|g" /home/bitsend/.bitsend/bitsend.conf
+sed -i "s|^\(rpcpassword=\).*|rpcpassword=$(openssl rand -base64 32)|g" /home/bitsend/.bitsend/bitsend.conf
+sed -i "s|^\(masternodeprivkey=\).*|masternodeprivkey=${MN_KEY}|g" /home/bitsend/.bitsend/bitsend.conf
 
 #
 # Downloading bootstrap file
