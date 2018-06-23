@@ -16,7 +16,7 @@ BOOTSTRAP="bootstrap.tar.gz"
 RED='\033[0;31m'
 GREEN='\033[0;32m'
 NO_COL='\033[0m'
-BSD_COL='\033[0;36m'
+BSD_COL='\033[0;34m'
 
 #
 # Check if bitsend.conf already exist. Set masternode genkey.
