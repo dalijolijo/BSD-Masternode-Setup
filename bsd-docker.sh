@@ -15,7 +15,7 @@ BOOTSTRAP="bootstrap.tar.gz"
 #
 clear
 REUSE="No"
-printf "\nDOCKER SETUP FOR BITSEND (BSD) RPC SERVER\n"
+printf "\nDOCKER SETUP FOR BITSEND (BSD) MASTERNODE SERVER\n"
 printf "\nSetup Config file"
 printf "\n-----------------"
 if [ -f "$CONFIG" ]
