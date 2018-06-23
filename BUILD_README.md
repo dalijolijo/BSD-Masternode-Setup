@@ -26,7 +26,7 @@ swapon /swapfile
 
 ## Build docker image
 ```
-docker build [--build-arg BSDPWD='<bitsend user pwd>'] -t bsd-masternode .
+docker build -t bsd-masternode .
 ```
 
 ## Push docker image to hub.docker
