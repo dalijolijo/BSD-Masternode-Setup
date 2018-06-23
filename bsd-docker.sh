@@ -19,7 +19,7 @@ NO_COL='\033[0m'
 BSD_COL='\033[0;36m'
 
 #
-# Check if bitsend.conf already exist. Set bitsend user pwd and masternode genkey
+# Check if bitsend.conf already exist. Set masternode genkey.
 #
 clear
 REUSE="No"
