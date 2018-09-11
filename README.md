@@ -7,7 +7,7 @@ You will need masternode genkey output and fresh password for new bitsend user.
 
 Login as root, then do:
 ```
-sudo bash -c "$(curl -fsSL https://github.com/dalijolijo/BSD-Masternode-Setup/raw/master/bsdsetup.sh)"
+sudo bash -c "$(curl -fsSL https://github.com/LIMXTEC/BSD-Masternode-Setup/raw/master/bsdsetup.sh)"
 ```
 
 To enable firewall, you have to manually reboot server when blockchain is fully loaded!
@@ -46,7 +46,7 @@ sudo curl -sSL https://get.docker.com | sh
 Login as root, then do:
 
 ```
-sudo bash -c "$(curl -fsSL https://github.com/dalijolijo/BSD-Masternode-Setup/raw/master/bsd-docker.sh)"
+sudo bash -c "$(curl -fsSL https://github.com/LIMXTEC/BSD-Masternode-Setup/raw/master/bsd-docker.sh)"
 ```
 
 ### For more details to docker related stuff have a look at:
