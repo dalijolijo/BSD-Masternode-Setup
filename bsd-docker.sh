@@ -1,12 +1,11 @@
 #!/bin/bash
 set -u
 
-GIT_REPO="dalijolijo"
+GIT_REPO="LIMXTEC"
 GIT_PROJECT="BSD-Masternode-Setup"
-DOCKER_REPO="dalijolijo"
+DOCKER_REPO="limxtec"
 IMAGE_NAME="bsd-masternode"
 IMAGE_TAG="0.14.1.0" #BSD Version 0.14.1.0
-DOCKER_REPO="dalijolijo"
 CONFIG="/home/bitsend/.bitsend/bitsend.conf"
 CONTAINER_NAME="bsd-masternode"
 DEFAULT_PORT="8886"
