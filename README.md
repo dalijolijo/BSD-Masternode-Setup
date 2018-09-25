@@ -9,7 +9,6 @@ Login as root, then do:
 ```
 sudo bash -c "$(curl -fsSL https://github.com/LIMXTEC/BSD-Masternode-Setup/raw/master/bsdsetup.sh)"
 ```
-
 To enable firewall, you have to manually reboot server when blockchain is fully loaded!
 
 Its loaded when "height" in message:
@@ -17,6 +16,13 @@ Its loaded when "height" in message:
 
 Will be equal to "Current numbers of blocks" in local wallet (gui - help>debug>information).
 After server restarts - you are free to enable masternode in local wallet.
+
+### Optional: Download and start the bootstrap script
+Every 3 hours will be our BitSend bootstrap refreshed. To get latest bootstrap/blockchain files, you need to login as root.
+Used path in this bootstrap script is **/root/.bitsend**
+```
+sudo bash -c "$(curl -fsSL https://raw.githubusercontent.com/LIMXTEC/BSD-Masternode-Setup/master/bootstrap.sh)"
+```
 
 ## OPTION 2: Deploy as a docker container
 
