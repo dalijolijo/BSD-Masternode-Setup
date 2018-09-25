@@ -1,9 +1,9 @@
 #!/bin/bash
 set -u
 
-GIT_REPO="dalijolijo"
+GIT_REPO="LIMXTEC"
 GIT_PROJECT="BSD-Masternode-Setup"
-DOCKER_REPO="dalijolijo"
+DOCKER_REPO="limxtec" #only lowercase
 IMAGE_NAME="bsd-masternode"
 IMAGE_TAG="0.14.2.0" #BSD Version 0.14.2.0
 CONFIG="/home/bitsend/.bitsend/bitsend.conf"
