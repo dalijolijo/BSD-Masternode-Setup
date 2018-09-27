@@ -100,7 +100,7 @@ if [ $? -eq 0 ];then
     fi
 fi
 docker rm ${CONTAINER_NAME} >/dev/null
-docker pull ${DOCKER_REPO}/bsd-masternode
+docker pull ${DOCKER_REPO}/${IMAGE_NAME}:${IMAGE_TAG}
 docker run --rm \
  -p ${DEFAULT_PORT}:${DEFAULT_PORT} \
  -p ${RPC_PORT}:${RPC_PORT} \
