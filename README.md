@@ -1,3 +1,4 @@
+[![docker pulls](https://img.shields.io/docker/pulls/limxtec/bsd-masternode.svg?style=flat)](https://hub.docker.com/r/limxtec/bsd-masternode/)
 # BSD-Masternode-Setup
 ## OPTION 1: Installation with script
 
