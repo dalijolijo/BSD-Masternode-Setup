@@ -8,6 +8,7 @@ IMAGE_NAME="bsd-masternode"
 IMAGE_TAG="0.14.2.0" #BSD Version 0.14.2.0
 CONFIG="/home/bitsend/.bitsend/bitsend.conf"
 MASTERNODE="1"
+TXINDEX="0"
 CONTAINER_NAME="bsd-masternode"
 DEFAULT_PORT="8886"
 RPC_PORT="8800"
@@ -110,6 +111,7 @@ docker run --rm \
  -e BSD_IP="${BSD_IP}" \
  -e MN_KEY="${MN_KEY}" \
  -e MASTERNODE="${MASTERNODE}" \
+ -e TXINDEX="${TXINDEX}" \
  -e WEB="${WEB}" \
  -e BOOTSTRAP="${BOOTSTRAP}" \
  -v /home/bitsend:/home/bitsend:rw \

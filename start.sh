@@ -18,6 +18,7 @@ sudo -u bitsend cp /tmp/bitsend.conf /home/bitsend/.bitsend/
 sed -i "s#^\(rpcuser=\).*#rpcuser=btxrpcnode$(openssl rand -base64 32 | tr -d '[:punct:]')#g" /home/bitsend/.bitsend/bitsend.conf
 sed -i "s#^\(rpcpassword=\).*#rpcpassword=$(openssl rand -base64 32 | tr -d '[:punct:]')#g" /home/bitsend/.bitsend/bitsend.conf
 sed -i "s|^\(masternode=\).*|masternode=${MASTERNODE}|g" /home/bitsend/.bitsend/bitsend.conf
+sed -i "s|^\(txindex=\).*|txindex=${TXINDEX}|g" /home/bitsend/.bitsend/bitsend.conf
 sed -i "s|^\(masternodeprivkey=\).*|masternodeprivkey=${MN_KEY}|g" /home/bitsend/.bitsend/bitsend.conf
 sed -i "s|^\(externalip=\).*|externalip=${BSD_IP}|g" /home/bitsend/.bitsend/bitsend.conf
 RPC_ALLOWIP=$(ip addr | grep 'global eth0' | xargs | cut -f2 -d ' ')

@@ -96,7 +96,7 @@ RUN echo '*** Running updates and installing required packages ***' && \
 RUN echo '*** Download BitSend release ***' && \
     mkdir -p /root/src && \
     cd /root/src && \
-    wget https://github.com/LIMXTEC/BitSend/releases/download/0.14.2.0.0/linux.Ubuntu.16.04.LTS-static-libstdc.tar.gz && \
+    wget https://github.com/LIMXTEC/BitSend/releases/download/0.14.2.0.1/linux.tar.gz && \
     tar xzf *.tar.gz && \
     chmod 775 bitsend* && \
     cp bitsend* /usr/local/bin && \
