@@ -6,7 +6,8 @@ GIT_PROJECT="BSD-Masternode-Setup"
 DOCKER_REPO="dalijolijo"
 IMAGE_NAME="bsd-masternode"
 IMAGE_TAG="0.14.2.0" #BSD Version 0.14.2.0
-CONFIG="/home/bitsend/.bitsend/bitsend.conf"
+CONFIG_PATH="/home/bitsend/.bitsend"
+CONFIG="${CONFIG_PATH}/bitsend.conf"
 MASTERNODE="1"
 TXINDEX="0"
 CONTAINER_NAME="bsd-masternode"
@@ -53,6 +54,7 @@ if [[ $REUSE =~ "N" ]] || [[ $REUSE =~ "n" ]]; then
     read MN_KEY
 else
     source $CONFIG
+    cp ${CONFIG_PATH}/bitsend.conf ${CONFIG_PATH}/.bitsend.conf
     BSD_IP=$(echo $externalip)
     MN_KEY=$(echo $masternodeprivkey)
 fi
@@ -114,6 +116,7 @@ docker run --rm \
  -e TXINDEX="${TXINDEX}" \
  -e WEB="${WEB}" \
  -e BOOTSTRAP="${BOOTSTRAP}" \
+ -e CONFIG_PATH="${CONFIG_PATH}" \
  -v /home/bitsend:/home/bitsend:rw \
  -d ${DOCKER_REPO}/${IMAGE_NAME}:${IMAGE_TAG}
 
@@ -123,7 +126,7 @@ docker run --rm \
 #
 clear
 printf "\nDocker Setup Result"
-printf "\n----------------------\n"
+printf "\n-------------------\n"
 sudo docker ps | grep ${CONTAINER_NAME} >/dev/null
 if [ $? -ne 0 ];then
     printf "${RED}Sorry! Something went wrong. :(${NO_COL}\n"
