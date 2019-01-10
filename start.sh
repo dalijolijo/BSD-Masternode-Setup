@@ -21,7 +21,6 @@ chown -R bitsend:bitsend /home/bitsend/
 if [ -f ${CONFIG_REUSE} ] ; then
 	sudo -u bitsend mv ${CONFIG_REUSE} ${CONFIG}
 else
-	printf "** Set rpcuser, rpcpassword and masternode genkey ***\n"
 	sudo -u bitsend cp /tmp/bitsend.conf ${CONFIG}
 	sed -i "s#^\(rpcuser=\).*#rpcuser=bsd$(openssl rand -base64 32 | tr -d '[:punct:]')#g" ${CONFIG}
 	sed -i "s#^\(rpcpassword=\).*#rpcpassword=$(openssl rand -base64 32 | tr -d '[:punct:]')#g" ${CONFIG}
@@ -31,6 +30,15 @@ else
 	sed -i "s|^\(externalip=\).*|externalip=${BSD_IP}|g" ${CONFIG}
 	RPC_ALLOWIP=$(ip addr | grep 'global eth0' | xargs | cut -f2 -d ' ')
 	sed -i "s#^\(rpcallowip=\).*#rpcallowip=${RPC_ALLOWIP}#g" ${CONFIG}
+fi
+
+#
+# Changes for ElectrumX
+#
+if [[ "$ELECTRUM" == "y" ]]; then
+	sed -i -e '/mnconflock/d' ${CONFIG}
+	sed -i -e '/promode/d' ${CONFIG}
+	sed -i -e '/masternodeprivkey/d' ${CONFIG}
 fi
 
 #

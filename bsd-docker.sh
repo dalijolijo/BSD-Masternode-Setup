@@ -14,9 +14,11 @@ CONTAINER_NAME="bsd-masternode"
 DEFAULT_PORT="8886"
 RPC_PORT="8800"
 TOR_PORT="9051"
-WEB="www.mybitsend.com" # without "https://" and without the last "/" (only HTTPS accepted)
+WEB="www.mybitsend.com"
 BOOTSTRAP="bootstrap.tar.gz"
 IP=$(curl -s https://bit-cloud.info/showip.php)
+ELECTRUM="n"
+
 
 #
 # Color definitions
@@ -25,6 +27,7 @@ RED='\033[0;31m'
 GREEN='\033[0;32m'
 NO_COL='\033[0m'
 BSD_COL='\033[0;34m'
+
 
 #
 # Check if bitsend.conf already exist. Set masternode genkey.
@@ -50,8 +53,12 @@ if [[ $REUSE =~ "N" ]] || [[ $REUSE =~ "n" ]]; then
     else
         BSD_IP=$(echo $IP)
     fi
-    printf "Enter your ${BSD_COL}BitSend${NO_COL} Masternode genkey respond and Hit [ENTER]: "
-    read MN_KEY
+    if [[ "$ELECTRUM" == "n" ]]; then
+        printf "Enter your ${BSD_COL}BitSend${NO_COL} Masternode genkey respond and Hit [ENTER]: "
+        read MN_KEY
+    else
+        MN_KEY="123"
+    fi
 else
     source $CONFIG
     cp ${CONFIG_PATH}/bitsend.conf ${CONFIG_PATH}/.bitsend.conf
@@ -66,6 +73,7 @@ fi
 if ! type "docker" > /dev/null; then
     curl -fsSL https://get.docker.com | sh
 fi
+
 
 #
 # Firewall Setup
@@ -117,6 +125,7 @@ docker run --rm \
  -e WEB="${WEB}" \
  -e BOOTSTRAP="${BOOTSTRAP}" \
  -e CONFIG_PATH="${CONFIG_PATH}" \
+ -e ELECTRUM="${ELECTRUM}" \
  -v /home/bitsend:/home/bitsend:rw \
  -d ${DOCKER_REPO}/${IMAGE_NAME}:${IMAGE_TAG}
 
