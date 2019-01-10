@@ -26,7 +26,7 @@ swapon /swapfile
 
 ## Build docker image
 ```
-docker build -t bsd-masternode .
+docker build -t bsd-masternode --build-arg VERSION=0.14.2.0.0 --build-arg RELEASE_TAR=linux.Ubuntu.16.04.LTS-static-libstdc.tar.gz .
 ```
 
 ## Push docker image to hub.docker
