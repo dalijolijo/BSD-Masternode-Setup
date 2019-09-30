@@ -79,35 +79,35 @@ RUN echo '*** Running updates and installing required packages ***' && \
 #
 # Cloning and Compiling BitSend Wallet
 #
-#RUN echo '*** Cloning and Compiling BitSend Wallet ***' && \
-#    cd && \
-#    echo "Execute a git clone of LIMXTEC/BitSend. Please wait..." && \
-#    git clone --branch master https://github.com/LIMXTEC/BitSend && \
-#    cd BitSend && \
-#    ./autogen.sh && \
-#    ./configure --disable-dependency-tracking --enable-tests=no --without-gui && \
-#    make && \
-#    cd && \
-#    cd BitSend/src && \
-#    strip bitsendd && \
-#    cp bitsendd /usr/local/bin && \
-#    strip bitsend-cli && \
-#    cp bitsend-cli /usr/local/bin && \
-#    chmod 775 /usr/local/bin/bitsend* && \   
-#    cd && \
-#    rm -rf BitSend
+RUN echo '*** Cloning and Compiling BitSend Wallet ***' && \
+    cd && \
+    echo "Execute a git clone of LIMXTEC/BitSend. Please wait..." && \
+    git clone --branch 0.17-test https://github.com/LIMXTEC/BitSend && \
+    cd BitSend && \
+    ./autogen.sh && \
+    ./configure --disable-dependency-tracking --enable-tests=no --without-gui && \
+    make && \
+    cd && \
+    cd BitSend/src && \
+    strip bitsendd && \
+    cp bitsendd /usr/local/bin && \
+    strip bitsend-cli && \
+    cp bitsend-cli /usr/local/bin && \
+    chmod 775 /usr/local/bin/bitsend* && \   
+    cd && \
+    rm -rf BitSend
 
 #
 # Download BitSend release
 #
-RUN echo '*** Download BitSend release ***' && \
-    mkdir -p /root/src && \
-    cd /root/src && \
-    wget https://github.com/LIMXTEC/BitSend/releases/download/${VERSION}/${RELEASE_TAR} && \
-    tar xzf *.tar.gz && \
-    chmod 775 bitsend* && \
-    cp bitsend* /usr/local/bin && \
-    rm *.tar.gz
+#RUN echo '*** Download BitSend release ***' && \
+#    mkdir -p /root/src && \
+#    cd /root/src && \
+#    wget https://github.com/LIMXTEC/BitSend/releases/download/${VERSION}/${RELEASE_TAR} && \
+#    tar xzf *.tar.gz && \
+#    chmod 775 bitsend* && \
+#    cp bitsend* /usr/local/bin && \
+#    rm *.tar.gz
 
 #
 # Copy Supervisor Configuration and bitsend.conf
