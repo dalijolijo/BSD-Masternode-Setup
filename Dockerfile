@@ -55,6 +55,7 @@ RUN echo '*** Running updates and installing required packages ***' && \
                         autoconf \
                         automake \
                         autotools-dev \
+			bsdmainutils \
                         build-essential \
                         curl \
                         git \
@@ -65,6 +66,7 @@ RUN echo '*** Running updates and installing required packages ***' && \
                         libtool \
                         libzmq5-dev \
                         pkg-config \
+			python3 \
                         software-properties-common \
                         sudo \
                         supervisor \
@@ -82,13 +84,15 @@ RUN echo '*** Running updates and installing required packages ***' && \
 RUN echo '*** Cloning and Compiling BitSend Wallet ***' && \
     cd && \
     echo "Execute a git clone of LIMXTEC/BitSend. Please wait..." && \
-    git clone --branch 0.17-test https://github.com/LIMXTEC/BitSend && \
+    git clone --branch 0.17-test https://github.com/dalijolijo/BitSend && \
     cd BitSend && \
     ./autogen.sh && \
-    ./configure --disable-dependency-tracking --enable-tests=no --without-gui && \
+    ./configure --disable-hardening --disable-dependency-tracking --enable-tests=no --without-gui && \
     make && \
-    cd && \
+    make install
+RUN cd && \
     cd BitSend/src && \
+    ls && \
     strip bitsendd && \
     cp bitsendd /usr/local/bin && \
     strip bitsend-cli && \
