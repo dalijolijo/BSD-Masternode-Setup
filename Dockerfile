@@ -84,7 +84,7 @@ RUN echo '*** Running updates and installing required packages ***' && \
 RUN echo '*** Cloning and Compiling BitSend Wallet ***' && \
     cd && \
     echo "Execute a git clone of LIMXTEC/BitSend. Please wait..." && \
-    git clone --branch 0.17-test https://github.com/dalijolijo/BitSend && \
+    git clone --branch 0.18 https://github.com/dalijolijo/BitSend && \
     cd BitSend && \
     ./autogen.sh && \
     ./configure --disable-hardening --disable-dependency-tracking --enable-tests=no --without-gui && \
