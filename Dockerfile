@@ -92,7 +92,8 @@ RUN echo '*** Cloning and Compiling BitSend Wallet ***' && \
     make install
 RUN cd && \
     cd BitSend/src && \
-    ls && \
+    mv bitcoind bitsendd && \
+     mv bitcoin-cli bitsend-cli && \
     strip bitsendd && \
     cp bitsendd /usr/local/bin && \
     strip bitsend-cli && \
