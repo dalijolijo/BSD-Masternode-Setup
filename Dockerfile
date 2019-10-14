@@ -12,7 +12,7 @@ FROM ubuntu:16.04
 
 LABEL maintainer="Jon D. (dArkjON), David B. (dalijolijo)"
 
-ARG VERSION=0.14.2.0.0
+ARG VERSION=0.17
 ENV VERSION=${VERSION}
 RUN echo ${VERSION}
 
